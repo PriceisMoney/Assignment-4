@@ -1,2 +1,17 @@
 # Assignment-4
 Tutedude
+
+Task 1: Read a File and Handle Errors =
+
+This program is designed to read the contents of a file named sample.txt and handle possible errors gracefully. First, the io module is imported so that the program can use the io.UnsupportedOperation exception later. Inside the try block, the program prints the message "Reading file content:" to inform the user that it is about to read the file. Then, the line with open("sample.txt", "rt") as file: opens the file named sample.txt in text read mode ("rt"). The with statement ensures that the file will be automatically closed after the block finishes, even if an error occurs. Next, file.readlines() reads all the lines from the file and stores them in the list lines.
+
+After that, the variable line_number is initialized with the value 1, which will be used to keep track of the current line number while printing. A simple for loop then iterates over each line in lines. Inside the loop, print(f"Line {line_number}: {line.strip()}") prints the line number along with the line’s text; line.strip() is used to remove any extra newline characters or spaces at the start and end of the line. After printing, line_number += 1 increases the line number by 1 for the next iteration. If the file sample.txt does not exist, the FileNotFoundError exception is caught, and the program prints "Error: The file 'sample.txt' was not found." If the file was opened in a mode that does not allow reading, the io.UnsupportedOperation exception is caught, and the program prints "Error: The file was opened in a mode that does not support reading." This way, the program does not crash and instead shows a clear error message to the user.
+
+
+Task 2: Write and Append Data to a File =
+
+This program demonstrates how to write, append, and read data from a file named output.txt. First, it asks the user to enter some text using input("Enter text to write to the file: "), and stores that text in the variable text_to_write. Then, with open("output.txt", "w") as file: opens output.txt in write mode ("w"). Write mode creates the file if it doesn’t exist and overwrites it if it already exists. Inside this block, file.write(text_to_write + "\n") writes the user’s text to the file and adds a newline at the end. After this, a message "Data successfully written to output.txt." is printed to confirm that the writing operation was completed.
+
+Next, the program moves to the append step. It asks the user for more text with input("Enter additional text to append: ") and stores it in additional_text. Then, with open("output.txt", "a") as file: opens the same file in append mode ("a"), which means new content will be added at the end of the file without removing the previous content. Inside this block, file.write(additional_text + "\n") appends the new text followed by a newline. The program then prints "Data successfully appended." to confirm that the append operation worked.
+
+Finally, the program reads and displays the complete content of the file. It first prints the heading "Final content of output.txt:". Then, with open("output.txt", "r") as file: opens the file in read mode ("r"). Inside this block, content = file.read() reads the entire content of the file into the variable content. The line print(content) then displays everything that is currently stored in output.txt, showing both the originally written text and the appended text. This way, the user can see the final state of the file after all operations
